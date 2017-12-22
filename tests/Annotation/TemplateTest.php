@@ -44,6 +44,26 @@ class TemplateTest extends TestCase
         $request = $event->getRequest();
 
         $this->assertInstanceOf(Template::class, $request->attributes->get('_template'));
+        $this->assertEquals('Hello World!', $request->attributes->get('_template')->getBody());
+    }
+
+    public function test_multiline_annotation_is_handled_by_controller_listener()
+    {
+        $request = new Request();
+        $controller = new DummyController();
+        $event = new FilterControllerEvent(
+            $this->getMockBuilder(HttpKernelInterface::class)->getMock(),
+            [$controller, 'multilineAction'],
+            $request,
+            HttpKernelInterface::MASTER_REQUEST
+        );
+
+        $this->listener->onKernelController($event);
+
+        $request = $event->getRequest();
+
+        $this->assertInstanceOf(Template::class, $request->attributes->get('_template'));
+        $this->assertEquals(' Hello World! ', $request->attributes->get('_template')->getBody());
     }
 }
 
@@ -53,4 +73,11 @@ class DummyController
      * @Template("Hello World!")
      */
     public function simpleAction() {}
+
+    /**
+     * @Template("
+     * Hello World!
+     * ")
+     */
+    public function multilineAction() {}
 }

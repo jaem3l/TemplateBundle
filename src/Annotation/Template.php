@@ -15,7 +15,7 @@ class Template implements ConfigurationInterface
 
     public function __construct(array $options)
     {
-        $this->body = (string) $options['value'];
+        $this->body = (string) preg_replace('/\n\s+\*/', '', $options['value']);
     }
 
     public function getBody(): string
