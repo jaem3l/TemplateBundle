@@ -1,6 +1,9 @@
 jaem3l TemplateBundle for Symfony 4
 ===================================
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/77bafc12-418f-4148-8b94-12960475e6f5/mini.png)](https://insight.sensiolabs.com/projects/77bafc12-418f-4148-8b94-12960475e6f5)
+[![Build Status](https://travis-ci.org/jaem3l/TemplateBundle.svg?branch=master)](https://travis-ci.org/jaem3l/TemplateBundle)
+
 This bundle provides a single `@Template` annotation that can be used in favor of
 SensioFrameworkExtraBundle's annotation with the same name.
 
