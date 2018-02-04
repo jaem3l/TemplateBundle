@@ -3,6 +3,8 @@ jaem3l TemplateBundle for Symfony 4
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77bafc12-418f-4148-8b94-12960475e6f5/mini.png)](https://insight.sensiolabs.com/projects/77bafc12-418f-4148-8b94-12960475e6f5)
 [![Build Status](https://travis-ci.org/jaem3l/TemplateBundle.svg?branch=master)](https://travis-ci.org/jaem3l/TemplateBundle)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d5f218c9745a017417b5/maintainability)](https://codeclimate.com/github/jaem3l/TemplateBundle/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d5f218c9745a017417b5/test_coverage)](https://codeclimate.com/github/jaem3l/TemplateBundle/test_coverage)
 
 This bundle provides a single `@Template` annotation that can be used in favor of
 SensioFrameworkExtraBundle's annotation with the same name.
@@ -73,7 +75,7 @@ Usage examples for Route-annotation
         /**
          * @Route("/advanced_hello ")
          * @Template("
-         * {% extends "base.html.twig" %}
+         * {% extends 'base.html.twig' %}
          *
          * {% block body %}
          * Hello {{ name }}!
