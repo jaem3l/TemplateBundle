@@ -27,8 +27,12 @@ The bundle can be installed via Composer:
 
     composer require jaem3l/template-bundle
 
-Usage Examples
---------------
+When using this bundle inside a Symfony 4 application bootstrapped with Flex,
+make sure you have installed the twig-bundle and set it up with its recipe, e.g.
+by using `composer req twig`.
+
+Usage examples for Route-annotation
+-----------------------------------
 
     <?php
 
@@ -66,3 +70,38 @@ Usage Examples
             ];
         }
     }
+
+Usage examples for TemplateController
+-------------------------------------
+
+In your routing you can now rely on this controller for directly rendering a
+provided template:
+
+```
+# SF3: app/config/routing.yml
+# SF4: config/routes.yaml
+
+hello_world:
+    path: /hello-world
+    controller: jæm3l\TemplateBundle\Controller\TemplateController::template
+    defaults:
+        template: 'Hello World!'
+        
+twig_expression:
+    path: /twig-expression
+    controller: jæm3l\TemplateBundle\Controller\TemplateController::template
+
+    defaults:
+        template: '{{ 1 + 2 }}'
+        
+advanced_template:
+    path: /advanced-template
+    controller: jæm3l\TemplateBundle\Controller\TemplateController
+    defaults:
+        template: |
+            {% extends 'base.html.twig' %}
+
+            {% block body %}
+            Hello World!
+            {% endblock %}
+```
