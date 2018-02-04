@@ -44,26 +44,43 @@ Usage examples for Route-annotation
     class HelloController
     {
         /**
-         * @Route("/")
+         * @Route("/hello1")
          * @Template("Hello World")
          */
-        public function phpHelloAction()
+        public function simpleHelloAction()
         {
+        }
+
+        /**
+         * @Route("/hello2 ")
+         * @Template("Hello {{ name }}")
+         */
+        public function advancedHelloAction()
+        {
+            return [
+                'name' => 'Santa Claus',
+            ];
         }
 
         /**
          * @Route("/twig")
          * @Template("{{ 1 + 2 }}")
          */
-        public function twigAction()
+        public function simpleExpressionAction()
         {
         }
 
         /**
-         * @Route("/twig_name ")
-         * @Template("Hello {{ name }}")
+         * @Route("/advanced_hello ")
+         * @Template("
+         * {% extends "base.html.twig" %}
+         *
+         * {% block body %}
+         * Hello {{ name }}!
+         * {% endblock %}
+         * ")
          */
-        public function twigNamedHelloAction()
+        public function advancedTemplateAction()
         {
             return [
                 'name' => 'Santa Claus',
@@ -90,7 +107,6 @@ hello_world:
 twig_expression:
     path: /twig-expression
     controller: jæm3l\TemplateBundle\Controller\TemplateController::template
-
     defaults:
         template: '{{ 1 + 2 }}'
         
