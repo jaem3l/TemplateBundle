@@ -18,12 +18,12 @@ class TemplateListenerTest extends TestCase
      */
     private $listener;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         class_exists(Template::class);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $loader = new ArrayLoader([]);
         $twig = new Environment($loader);

@@ -17,12 +17,12 @@ class TemplateTest extends TestCase
      */
     private $listener;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         class_exists(Template::class);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $reader = new AnnotationReader();
         $this->listener = new ControllerListener($reader);
